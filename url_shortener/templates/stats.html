@@ -1,0 +1,26 @@
+{% for link in links %}
+original_url: {{ link.original_url }} <br>
+short_url: {{link.short_url }} <br>
+visits: {{ link.visits }} <br>
+{% endfor %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+        {% for link in links %}
+        original_url: {{ link.original_url }} <br>
+        short_url: {{link.short_url }} <br>
+        visits: {{ link.visits }} <br>
+        {% endfor %}
+    </div>
+  </section>
+  </body>
+</html>
