@@ -2,7 +2,7 @@ from flask import Blueprint,render_template,request,redirect
 
 from url_shortener.models import Link
 from .extensions import db
-from .auth import requires_auth
+from .auth import logout, requires_auth
 
 short =Blueprint('short',__name__)
 
@@ -41,4 +41,9 @@ def stats():
 
 @short.errorhandler(404)
 def page_not_found(e):
-    return '<h1>Page not found</h1>',404
+    return render_template('404.html'),404
+
+
+@short.route("/logout")
+def logout2():
+    return logout()

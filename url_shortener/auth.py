@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import request, Response,current_app
+from flask import redirect, request, Response,current_app, session
 
 
 
@@ -30,6 +30,17 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
+
+def logout():
+    """Logs out the user by sending a 401 response and redirecting to the root route."""
+    response = Response(
+        'Logged out successfully.\n'
+        'Please log in again with proper credentials', 
+        401,
+        {'WWW-Authenticate': 'Basic realm="Login Required"'}
+    )
+    response.headers['Location'] = '/'  # Redirect to the root route
+    return response
 
 # @app.route('/')
 # @requires_auth
